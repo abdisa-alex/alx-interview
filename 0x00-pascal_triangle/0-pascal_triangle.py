@@ -1,27 +1,28 @@
-
 #!/usr/bin/python3
 """
-returns a list of lists of integers representing the Pascals triangle of n
+Pascale triangle
 """
+
+
+def fact(n):
+    if n == 0:
+        return 1
+    prod = 1
+    for i in range(1, n+1):
+        prod = prod * i
+    return prod
 
 
 def pascal_triangle(n):
     """
-    returns a list of lists of integers
-    representing the Pascals triangle of n
+    pascal triangle using python
     """
-
-    if(n <= 0):
+    if n <= 0:
         return []
-    else:
-        a = [[] for i in range(n)]
-        for i in range(n):
-            for j in range(i+1):
-                if(j < i):
-                    if(j == 0):
-                        a[i].append(1)
-                    else:
-                        a[i].append(a[i-1][j]+a[i-1][j-1])
-                elif(j == i):
-                    a[i].append(1)
-        return a
+    List_1 = []
+    for i in range(n):
+        List_2 = []
+        for j in range(i + 1):
+            List_2.append(fact(i)//(fact(j) * fact(i - j)))
+        List_1.append(List_2)
+    return List_1
